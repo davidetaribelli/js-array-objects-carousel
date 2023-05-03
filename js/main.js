@@ -1,10 +1,5 @@
 // VARIABILI
 const mainEl = document.querySelector(".main");
-const btnNext = document.querySelector(".right");
-const btnBack = document.querySelector(".left");
-let currentImg = 0;
-
-
 
 // Array di oggetti
 const images = [
@@ -39,23 +34,48 @@ images.forEach((element, i, array) => {
     let viewImage = ``;
     if (i == 0) {
         viewImage += `<div class="container visible">`;
-        viewImage += `<h2>${img.title}</h2>`;
-        viewImage += `<p>${img.text}</p>`;
-        viewImage += `<img src="${imgPath}/${img.image}" alt="${img.title}" />`;
-        viewImage += `</div>`;
+        
     } else{
         viewImage = `<div class="container">`;
     }
-
+    viewImage += `<h2>${img.title}</h2>`;
+    viewImage += `<p>${img.text}</p>`;
+    viewImage += `<img src="${imgPath}/${img.image}" alt="${img.title}" />`;
+    viewImage += `</div>`;
     mainEl.innerHTML += viewImage;
 }); 
 
+const btnNext = document.getElementById("right");
+const btnBack = document.getElementById("left");
 const slide = document.querySelectorAll(".container");
+let currentImg = 0;
+
+btnNext.addEventListener("click", function () {
+
+    slide[currentImg].classList.remove("visible");
+
+    currentImg++;
+
+    if (currentImg == slide.length) {
+        currentImg = 0;
+    }
+
+    slide[currentImg].classList.add("visible");
+
+});
 
 
-btnNext.addEventListener("click", function(){
+btnBack.addEventListener("click", function () {
 
-     console.log("ciao");
-    
+    slide[currentImg].classList.remove("visible");
+
+    currentImg--;
+
+    if (currentImg < 0) {
+        currentImg = slide.length -1;
+    }
+
+    slide[currentImg].classList.add("visible");
+
 });
 

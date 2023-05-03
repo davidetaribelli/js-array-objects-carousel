@@ -51,11 +51,11 @@ button {
     
 }
 
-.right{
+#right{
     right: 20%;
 }
 
-.left {
+#left {
     left: 20%;
 }
 
