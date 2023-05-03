@@ -50,12 +50,13 @@ const btnBack = document.getElementById("left");
 const slide = document.querySelectorAll(".container");
 let currentImg = 0;
 
+// al click rimuovo all'img corrente che ha valore 0 la classe visible, incremento di 1 la img corrente alla quale poi aggiungerò la classe visible.
 btnNext.addEventListener("click", function () {
 
     slide[currentImg].classList.remove("visible");
 
     currentImg++;
-
+    // se l'img corrente ha lo stesso valore della length dell'array allora l'immagine corrente avrà valore 0, in questo modo ho un ciclo infinito
     if (currentImg == slide.length) {
         currentImg = 0;
     }
@@ -64,13 +65,13 @@ btnNext.addEventListener("click", function () {
 
 });
 
-
+// al click rimuovo all'img corrente che ha valore 0 la classe visible, decremento di 1 la img corrente alla quale poi aggiungerò la classe visible.
 btnBack.addEventListener("click", function () {
 
     slide[currentImg].classList.remove("visible");
 
     currentImg--;
-
+    // se l'img corrente è min di 0 allora l'immagine corrente avrà valore (lunghezza dell'array -1 ), in questo modo ho un ciclo infinito
     if (currentImg < 0) {
         currentImg = slide.length -1;
     }
